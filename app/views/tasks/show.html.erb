@@ -1,0 +1,27 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+
+
+<h1 style="margin:0px 0px 10px 45px" ><%= @task.title %></h1>
+<h3 style="margin-left:40px" class="btn btn-secondary" style="opacity:0.6" style="margin-left:450px"><%= @task.details %></h3>
+
+<% if @task.completed == true
+      @done = "This task is completed"
+    else
+      @done = "Task not completed yet"
+      end %>
+
+<ul style="list-style-type: none; margin-left:2px" >
+  <li><%= check_box("task", @task.id, {checked: @task.completed}) %> <%= @done %>
+    </li>
+</ul>
+
+
+
+<div class ="redirect" style="margin-left:45px">
+  <p><%= link_to "Back to list", tasks_path %></p>
+  <p><%= link_to "Edit task", edit_task_path(@task) %></p>
+  <p>⚠️<%= link_to "Delete task", task_path(@task), method: :delete, data: { confirm: "Are you sure?" } %></p>
+</div>
+
+
+
